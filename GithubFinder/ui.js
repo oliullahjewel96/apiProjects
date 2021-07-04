@@ -37,6 +37,45 @@ class UI{
            <div id="repos"></div>
         `;
     }
+    //Show alert in the UI
+
+    showAlert(message, className){
+
+      //Clear any remaining alert
+      this.clearAlert();
+      //Create div element
+      const div = document.createElement('div');
+
+      //Add classes
+      div.className = className;
+
+      //Add text
+      div.appendChild(document.createTextNode(message));
+
+      //Get parent 
+      const container = document.querySelector('.searchContainer');
+
+      //Get search box
+      const search = document.querySelector('.search');
+
+      container.insertBefore(div, search);
+
+      //Set timeout
+
+      setTimeout(()=>{
+        this.clearAlert();
+      }, 3000);
+    }
+    //Clear alert messages
+
+    clearAlert(){
+      const currentAlert = document.querySelector('.alert');
+
+      if (currentAlert) {
+        currentAlert.remove();
+      }
+    }
+    //clear profile from the UI
     clearProfile(){
       this.profile.innerHTML = '';
     }
